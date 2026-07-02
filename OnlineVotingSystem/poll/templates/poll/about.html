@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>About - Online Voting System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url('https://t4.ftcdn.net/jpg/05/50/34/75/360_F_550347527_a4E35eFyM3s5KhwaUMoGmqgJQf9Ub48q.jpg') center/cover fixed;
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 18px;
+        }
+
+        .jumbotron {
+            background-color: transparent;
+            padding: 40px;
+            margin-top: 20px;
+            text-align: center;
+            color: #343a40;
+        }
+
+        #ballotBox {
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin: 0 auto; /* Center the image horizontally */
+            margin-left: -3cm; /* Move the image 3cm to the left */
+        }
+
+        #ballotBox:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar for home and about buttons -->
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+    </div>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h2>The Importance of Voting</h2>
+            <p>Voting is a fundamental right and a crucial aspect of any democratic society. It plays a vital role in shaping
+                the future of a nation and its citizens. Here are some reasons highlighting the importance of voting:</p>
+
+            <ul>
+                <li><strong>Expression of Voice:</strong> Voting allows individuals to express their opinions and beliefs on
+                    various issues and policies. It gives citizens a direct role in the decision-making process.</li>
+
+                <li><strong>Accountability:</strong> By participating in elections, citizens hold their leaders and
+                    representatives accountable for their actions. It promotes transparency and responsibility in
+                    governance.</li>
+
+                <li><strong>Social Change:</strong> Voting is a powerful tool for driving social change. It enables people to
+                    support candidates and initiatives that align with their values and vision for a better society.</li>
+
+                <li><strong>Community Engagement:</strong> Voting fosters a sense of community engagement and civic
+                    responsibility. It brings people together to actively contribute to the well-being of their
+                    communities.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
