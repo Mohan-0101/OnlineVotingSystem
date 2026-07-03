@@ -11,25 +11,32 @@ class RegistrationForm(forms.ModelForm):
         widget=forms.SelectDateWidget(years=range(1950, 2010))
     )
 
-
     phone_number = forms.CharField(
         max_length=10,
         label="Phone Number",
     )
 
-    # Add the "OTP" field
-    otp = forms.CharField(
-        max_length=6,
-        label="OTP (One-Time Password)",
-        help_text="Enter the 6-digit OTP sent to your phone number."
-    )
-
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'date_of_birth', 'phone_number', 'otp']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'date_of_birth', 'phone_number']
         widgets = {
             'password': forms.PasswordInput,
         }
+
+class OTPForm(forms.Form):
+    otp = forms.CharField(
+        max_length=6,
+        min_length=6,
+        label="One-Time Password (OTP)",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control premium-input text-center fs-4 letter-spacing-lg', 
+            'placeholder': '123456',
+            'autocomplete': 'off',
+            'required': 'true'
+        }),
+        help_text="Enter the 6-digit OTP code sent to your email."
+    )
+
 
     def clean_date_of_birth(self):
         date_of_birth = self.cleaned_data.get('date_of_birth')

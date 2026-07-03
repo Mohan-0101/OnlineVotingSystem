@@ -1,112 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "poll/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Online Voting System</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background: url('https://t4.ftcdn.net/jpg/05/50/34/75/360_F_550347527_a4E35eFyM3s5KhwaUMoGmqgJQf9Ub48q.jpg') center/cover fixed;
-            margin: 0;
-            font-family: 'Open Sans', sans-serif;
-        }
+{% block title %}Welcome{% endblock %}
 
-        .navbar {
-            position: fixed;
-            top: 0;
-            right: 0;
-            padding: 15px;
-            z-index: 1000;
-        }
-
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 18px;
-        }
-
-        .jumbotron {
-            background-color: transparent;
-            padding: 40px;
-            margin-top: 20px;
-            text-align: center;
-            color: #343a40;
-        }
-
-        .my-4,
-        .my-5 {
-            display: none; /* Remove or comment out these lines to hide the lines */
-        }
-
-        #ballotBox {
-            cursor: pointer;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            margin: 0 auto; /* Center the image horizontally */
-            margin-left: -3cm; /* Move the image 3cm to the left */
-        }
-
-        #ballotBox:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes bounce {
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-20px);
-            }
-
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- Navigation bar for home and about buttons -->
-    <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
+{% block content %}
+<div class="row min-vh-75 align-items-center justify-content-between my-5 py-4">
+  <!-- Left Side: Title and Welcome Text -->
+  <div class="col-md-6 text-center text-md-start mb-5 mb-md-0">
+    <h1 class="display-3 fw-bold section-title mb-3" style="line-height: 1.15;">
+      Secure. Simple. <br />Transparent Voting.
+    </h1>
+    <p class="fs-5 text-muted-custom mb-4" style="max-width: 500px; line-height: 1.6;">
+      Welcome to the next generation of democracy. Cast your ballot securely, track results in real-time, and make your voice heard with absolute confidence.
+    </p>
+    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start">
+      <a class="btn btn-premium-primary btn-lg px-4 py-3" href="{% url 'dashboard' %}">
+        <i class="fa-solid fa-right-to-bracket me-2"></i> Enter Dashboard
+      </a>
+      <a class="btn btn-outline-light btn-lg px-4 py-3 border-secondary" href="{% url 'registration' %}" style="border-radius: 10px;">
+        <i class="fa-solid fa-user-plus me-2 text-info"></i> Register to Vote
+      </a>
     </div>
+  </div>
 
-    <div class="container">
-        <div class="jumbotron">
-            <hr class="my-4">
-            <div class="d-flex justify-content-center align-items-center">
-                <img id="ballotBox"
-                    src="https://img.freepik.com/premium-photo/vote-button-with-blue-light-white-background-3d-illustration_556904-290.jpg?w=1060"
-                    alt="Ballot Box" width="300" height="300" onclick="bounceImage()" class="img-fluid rounded" />
-            </div>
-            <hr class="my-5">
-        </div>
+  <!-- Right Side: Glowing Interactive Vote Button -->
+  <div class="col-md-5 d-flex justify-content-center">
+    <div class="glass-card p-4 d-flex justify-content-center align-items-center" style="max-width: 360px; border-radius: 30px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);">
+      <img id="ballotBox"
+        src="{% static 'poll/images/vote_button.png' %}"
+        alt="Glow Vote Button" 
+        width="280" 
+        height="280" 
+        onclick="bounceImage()" 
+        class="img-fluid" 
+        style="cursor: pointer; transition: transform 0.3s ease, filter 0.3s ease;"
+      />
     </div>
+  </div>
+</div>
 
-    <script>
-        function bounceImage() {
-            var ballotBox = document.getElementById('ballotBox');
-            ballotBox.style.animation = 'bounce 0.5s';
-            setTimeout(function () {
-                ballotBox.style.animation = '';
-                // Redirect to the dashboard after the animation
-                window.location.href = '/dashboard'; // Replace '/dashboard' with the actual URL of your dashboard
-            }, 500);
-        }
-    </script>
+<style>
+  /* Custom bounce animation keyframes */
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.85);
+    }
+  }
 
-</body>
+  /* Min height utility for layout centering */
+  .min-vh-75 {
+    min-height: 75vh;
+  }
 
-</html>
+  /* Glow and hover adjustments for the vote button */
+  #ballotBox:hover {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.4));
+  }
+</style>
+
+<script>
+  function bounceImage() {
+    var ballotBox = document.getElementById('ballotBox');
+    // Trigger CSS scale bounce animation
+    ballotBox.style.animation = 'bounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    setTimeout(function () {
+      ballotBox.style.animation = '';
+      // Redirect to the dashboard after animation completes
+      window.location.href = "{% url 'dashboard' %}";
+    }, 400);
+  }
+</script>
+{% endblock %}
+

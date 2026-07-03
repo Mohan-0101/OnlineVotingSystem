@@ -80,11 +80,12 @@ DATABASES ={
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'onlinevotingsystem',
         'USER': 'postgres',
-        'PASSWORD': '12345',
+        'PASSWORD': 'krishh@001',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 
 
@@ -126,3 +127,18 @@ LOGIN_URL = '/login/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = '/media/'
+
+# Email Settings
+# Real Gmail SMTP configurations (Option B)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mohanchakri2005@gmail.com'  # <-- Replace with your Gmail address
+EMAIL_HOST_PASSWORD = 'ddpu dsnx kxiu wama'   # <-- Replace with your 16-digit Google App Password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+
+
+
